@@ -11,6 +11,32 @@
   </head>
 
   <body>
+    <header>
+
+      <% if customer_signed_in? %>
+        <li>マイページ</li>
+        <li>商品一覧</li>
+        <li>カート</li>
+        <li><%= link_to 'ログアウト', destroy_customer_session_path %></li>
+
+      <% elsif admin_signed_in? %>
+        <li>商品一覧</li>
+        <li>会員一覧</li>
+        <li>注文一覧</li>
+        <li>ジャンル一覧</li>
+        <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+        <!--a@admin/aaaaaa-->
+
+      <% else %>
+        <li>About</li>
+        <li>商品一覧</li>
+        <li><%= link_to '新規登録', new_customer_registration_path %></li>
+        <li><%= link_to 'ログイン', new_customer_session_path %></li>
+        <li><%= link_to '管理者ログイン（最後は消す）', new_admin_session_path %></li>
+
+      <% end %>
+
+    </header>
     <%= yield %>
   </body>
 </html>
