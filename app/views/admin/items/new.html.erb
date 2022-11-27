@@ -1,6 +1,8 @@
 <h1>new_admin_item</h1>
 
 <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+  <h4>商品画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
   <h4>genre_id</h4>
   <%= f.text_field :genre_id %>
   <h4>name</h4>
