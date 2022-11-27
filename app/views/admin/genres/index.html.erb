@@ -1,0 +1,22 @@
+<h1>Admin::Genres#index</h1>
+<p>Find me in app/views/admin/genres/index.html.erb</p>
+
+<teble>
+
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+    </tr>
+  </thead>
+
+  <% @genres.each do |genre| %>
+    <tbody>
+      <tr>
+        <th><%= genre.name %></th>
+        <th><%= link_to '編集する', edit_admin_genre_path(genre.id) %></th>
+      </tr>
+    </tbody>
+  <% end %>
+
+</teble>
+
