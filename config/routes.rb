@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
+
+  namespace :admin do
+    resources :items
+  end
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
