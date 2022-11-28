@@ -19,7 +19,7 @@
     <tbody>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.name %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre_id %></td>
         <td><%= item.is_active %></td>

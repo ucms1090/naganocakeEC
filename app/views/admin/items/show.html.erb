@@ -1,0 +1,12 @@
+<%= image_tag @item.image %>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.genre.name %>
+<%= @item.price %>
+<% if @item.is_active %>
+  <p>販売中</p>
+<% else %>
+  <p>販売停止中</p>
+<% end %>
+
+<%= link_to '編集する', edit_admin_item_path(params[:id]) %>
