@@ -1,6 +1,6 @@
-<h1>new_admin_item</h1>
+<h1>admin/item/edit</h1>
 
-<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+<%= form_with model: @item, url: admin_item_path(params[:id]), method: :patch do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
   <h4>商品名</h4>
@@ -17,5 +17,5 @@
   <%= f.radio_button :is_active, false %>
   <%= f.label :is_active, "販売停止中" %>
 
-  <%= f.submit '商品追加' %>
+  <%= f.submit '変更を保存' %>
 <% end %>
