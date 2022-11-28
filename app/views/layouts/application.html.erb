@@ -15,13 +15,13 @@
 
       <% if customer_signed_in? %>
         <li>マイページ</li>
-        <li>商品一覧</li>
+        <li><%= link_to '商品一覧', admin_items_path %></li>
         <li>カート</li>
         <li><%= link_to 'ログアウト', destroy_customer_session_path %></li>
         <!--a@a/aaaaaa-->
 
       <% elsif admin_signed_in? %>
-        <li>商品一覧</li>
+        <li><%= link_to '商品一覧', admin_items_path %></li>
         <li>会員一覧</li>
         <li>注文一覧</li>
         <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
@@ -30,7 +30,7 @@
 
       <% else %>
         <li>About</li>
-        <li>商品一覧</li>
+        <li><%= link_to '商品一覧', admin_items_path %></li>
         <li><%= link_to '新規登録', new_customer_registration_path %></li>
         <li><%= link_to 'ログイン', new_customer_session_path %></li>
         <li><%= link_to '管理者ログイン（最後は消す）', new_admin_session_path %></li>

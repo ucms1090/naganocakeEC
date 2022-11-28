@@ -12,6 +12,7 @@
   <% @genres.each do |genre| %>
     <tbody>
       <tr>
+        <th><%= genre.id %></th>
         <th><%= genre.name %></th>
         <th><%= link_to '編集する', edit_admin_genre_path(genre.id) %></th>
       </tr>
