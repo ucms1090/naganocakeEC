@@ -1,0 +1,8 @@
+<h1>Public::Items#index</h1>
+<p>Find me in app/views/public/items/index.html.erb</p>
+
+<% @items.each do |item| %>
+  <%= link_to image_tag(item.get_item_image(200,100)), public_item_path(item.id) %>
+  <%= item.name %>
+  <%= item.price %>
+<% end %>

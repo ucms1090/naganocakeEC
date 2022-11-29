@@ -1,5 +1,10 @@
 <h1>Homes#top</h1>
 <p>Find me in app/views/homes/top.html.erb</p>
 
+<p>ジャンル検索</p>
+<% @genres.each do |genre| %>
+<%= link_to genre.name, root_path %>
+<% end %>
+
 <p>ようこそ長野ケーキへ！</p>
 <%= link_to 'admin_item', new_admin_item_path %>
