@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-  namespace :public do
+  scope module: 'public' do
     resources :items, only: [:show, :index]
     resources :cart_items, only: [:index, :update, :create, :destroy]
   end
+
 
   namespace :admin do
     resources :items

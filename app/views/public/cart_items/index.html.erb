@@ -4,29 +4,28 @@
 
 <table>
 
-  <th>
-    <tr>商品名</tr>
-    <tr>単価（税込）</tr>
-    <tr>数量</tr>
-    <tr></tr>
-  </th>
-  <% @cart_items.each do |cart_items| %>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+
   <tbody>
-    <th>
-
-      <tr>
-        <%= cart_items.item.name %>
-      </tr>
-      <tr>
-        <%= cart_items.item.price %>
-      </tr>
-      <tr>
-        <%= cart_items.amount %>
-      </tr>
-
-    </th>
+    <% @cart_items.each do |cart_items| %>
+    <tr>
+      <td><%= cart_items.item.name %></td>
+      <td><%= cart_items.item.price %></td>
+      <td><%= cart_items.amount %></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
   </tbody>
-  <% end %>
+
 </table>
 
 
