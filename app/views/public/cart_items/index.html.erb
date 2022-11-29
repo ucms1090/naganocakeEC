@@ -1,2 +1,33 @@
 <h1>Public::CartItems#index</h1>
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
+
+
+<table>
+
+  <th>
+    <tr>商品名</tr>
+    <tr>単価（税込）</tr>
+    <tr>数量</tr>
+    <tr></tr>
+  </th>
+  <% @cart_items.each do |cart_items| %>
+  <tbody>
+    <th>
+
+      <tr>
+        <%= cart_items.item.name %>
+      </tr>
+      <tr>
+        <%= cart_items.item.price %>
+      </tr>
+      <tr>
+        <%= cart_items.amount %>
+      </tr>
+
+    </th>
+  </tbody>
+  <% end %>
+</table>
+
+
+
