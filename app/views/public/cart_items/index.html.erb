@@ -19,9 +19,9 @@
     <tr>
       <td><%= cart_items.item.name %></td>
       <td><%= cart_items.item.price %></td>
-      <td><%= cart_items.amount %></td>
-      <td></td>
-      <td></td>
+      <td><%= cart_items.amount %><%= cart_items.select :amount, *[1..10] %><%= f.submit '変更' %></td>
+      <td><%= cart_items.item.price %></td>
+      <td><%= link_to '削除する', cart_item_path(cart_items.id), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
