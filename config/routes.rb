@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
+
   scope module: 'public' do
     resources :items, only: [:show, :index]
     resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'cart_items', to: 'cart_items#destroy_all', as: 'cart_items_destroy_all'
   end
 
 

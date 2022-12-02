@@ -9,5 +9,4 @@
 <%= f.select :amount, *[1..10] %>
 <%= f.hidden_field :item_id, :value => @item.id %>
 <%= f.submit 'カートに入れる' %>
-<p>（cart_itemsに追加するためのform_withが必要）</p>
 <% end %>

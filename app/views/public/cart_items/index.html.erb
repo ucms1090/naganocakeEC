@@ -1,6 +1,8 @@
 <h1>Public::CartItems#index</h1>
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
 
+<%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete %>
+<p></p>
 
 <table>
 
@@ -15,18 +17,20 @@
   </thead>
 
   <tbody>
-    <% @cart_items.each do |cart_items| %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= cart_items.item.name %></td>
-      <td><%= cart_items.item.price %></td>
-      <td><%= cart_items.amount %><%= cart_items.select :amount, *[1..10] %><%= f.submit '変更' %></td>
-      <td><%= cart_items.item.price %></td>
-      <td><%= link_to '削除する', cart_item_path(cart_items.id), method: :delete %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td><%= cart_item.amount %></td>
+      <td><%= cart_item.subtotal %></td>
+      <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete %></td>
     </tr>
+
     <% end %>
   </tbody>
 
 </table>
 
+<%= link_to '買い物を続ける', items_path %>
 
-
+<p>情報入力に進む</p>
