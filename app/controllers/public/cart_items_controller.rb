@@ -1,10 +1,12 @@
 class Public::CartItemsController < ApplicationController
 
   def index
+    @total = 0
     @cart_items = CartItem.where(customer_id: current_customer)
   end
 
   def create
+    binding.pry
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
     cart_item.save
