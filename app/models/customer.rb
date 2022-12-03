@@ -8,5 +8,7 @@ class Customer < ApplicationRecord
            :postal_code, :address, :telephone_number, :is_deleted
 
   has_many :cart_items
+  has_many :orders
+  has_many :addresses
 
 end

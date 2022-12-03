@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-
   scope module: 'public' do
     resources :items, only: [:show, :index]
     resources :cart_items, only: [:index, :update, :create, :destroy]
+    resources :orders, only: [:new, :show, :index]
+    post 'orders', to: 'orders#confirm', as: 'orders_confirm'
+    get 'orders', to: 'orders#complete', as: 'orders_complete'
     delete 'cart_items', to: 'cart_items#destroy_all', as: 'cart_items_destroy_all'
   end
 
