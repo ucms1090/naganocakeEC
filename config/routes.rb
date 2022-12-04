@@ -2,20 +2,26 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-  scope module: 'public' do
-    resources :items, only: [:show, :index]
-    resources :cart_items, only: [:index, :update, :create, :destroy]
-    resources :orders, only: [:new, :show, :index]
-    post 'orders', to: 'orders#confirm', as: 'orders_confirm'
-    get 'orders', to: 'orders#complete', as: 'orders_complete'
-    delete 'cart_items', to: 'cart_items#destroy_all', as: 'cart_items_destroy_all'
-  end
-
-
   namespace :admin do
     resources :items
     resources :genres
   end
+
+
+  scope module: 'public' do
+    resources :items, only: [:show, :index]
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    resources :orders, only: [:new, :show, :index]
+    post 'orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
+    get 'orders/complete', to: 'orders#complete', as: 'orders_complete'
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all', as: 'cart_items_destroy_all'
+    get 'customers/mypage', to: 'customers#show', as: 'mypage'
+    get 'customers/information/edit', to: 'customers#edit', as: 'edit_information'
+    patch 'customers/information', to: 'customers#update', as: 'information'
+    get 'customers/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw', to: 'customers#withdraw', as: 'withdraw'
+  end
+
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
