@@ -49,3 +49,7 @@
 <%= @order.postal_code %>
 <%= @order.postal_address %>
 <%= @order.postal_name %>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= f.submit '注文を確定する' %>
+<% end %>

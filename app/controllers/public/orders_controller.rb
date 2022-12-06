@@ -5,11 +5,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
-    order = Order.new(order_params)
+    order = Order.new
     order.customer_id = current_customer.id
     order.save
-    redirect_to confirm
+    redirect_to orders_complete_path
   end
 
   def confirm
@@ -31,6 +30,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @order = Order.new
   end
 
   def index
