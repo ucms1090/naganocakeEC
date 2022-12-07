@@ -5,9 +5,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new
-    order.customer_id = current_customer.id
+    order = Order.new(order_params)
     order.save
+
+    @cart_items = CartItem.where(customer_id: current_customer)
+
+    @cart_items.each do |f|
+      order_details = OrderDetail.new
+      order_details.order_id = order.id
+      order_details.item_id = f.item_id
+      order_details.price = f.item.price
+      order_details.items_amount = f.amount
+      order_details.making_status = 0
+      order_details.save
+    end
+
+    @cart_items.destroy_all
+
     redirect_to orders_complete_path
   end
 
@@ -42,7 +56,9 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:method_payment, :postal_code, :postal_address, :postal_name)
+    params.require(:order).permit(:method_payment, :postal_code, :postal_address,
+                                  :postal_name, :billing_amount, :shipping_cost,
+                                  :customer_id, :order_status)
   end
 
 end
