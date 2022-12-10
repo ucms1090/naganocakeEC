@@ -1,10 +1,61 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
 
-<p>ジャンル検索</p>
-<% @genres.each do |genre| %>
-<%= link_to genre.name, root_path %>
-<% end %>
+  <div class="row">
 
-<p>ようこそ長野ケーキへ！</p>
+    <div class="col-lg-2">
+
+      <table border="1">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+
+          <tr>
+            <td>
+              <% @genres.each do |genre| %>
+              <%=link_to genre.name, root_path %><br>
+              <% end %>
+              </td>
+          </tr>
+      </table>
+
+    </div>
+
+    <div class="col-lg-8" style="background-color: orange;">
+      <p>ようこそ長野ケーキへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+
+    <div class="col-lg-10">
+      <h4>新着商品</h4>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+
+    <% @items.each do |item| %>
+      <div class="col-lg-2">
+        <%= image_tag item.get_item_image(150,100) %><br>
+        <%= item.name %>
+        <%= item.price %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+
 <%= link_to 'admin_item', new_admin_item_path %>

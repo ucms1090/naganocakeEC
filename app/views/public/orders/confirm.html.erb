@@ -61,6 +61,6 @@
 <%= f.hidden_field :billing_amount, :value => @billing_amount %>
 <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
 <%= f.hidden_field :method_payment, :value => method %>
-<%= f.hidden_field :order_status, :value => 0 %>
+<%= f.hidden_field :order_status, :value => [:wait] %>
 <%= f.submit '注文を確定する' %>
 <% end %>
