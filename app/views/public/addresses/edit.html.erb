@@ -1,25 +1,57 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
-
-<p>配送先編集</p>
-
-<%= form_with model: @address, url: address_path, method: :patch do |f| %>
-  <div>
-    <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
-    <%= f.text_field :postal_code %>
+<div class="container">
+  <div class="row py-4">
+    <h5>配送先編集</h5>
   </div>
 
-  <div>
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address %>
+  <div class="row">
+    <div class="form-horizontal m-3" role="form">
+      <%= form_with model: @address, url: address_path, method: :patch do |f| %>
+
+        <div class="form-group">
+          <div class="form-inline">
+            <div class="col-lg-7">
+              <%= f.label :postal_code, "郵便番号（ハイフンなし）", class:'control-label' %>
+            </div>
+            <div class="col-lg-4">
+              <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-inline">
+            <div class="col-lg-7">
+              <%= f.label :address, "住所", class:'control-label' %>
+            </div>
+            <div class="col-lg-4">
+              <%= f.text_field :address, autocomplete: "address", placeholder: "東京都白金" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-inline">
+            <div class="col-lg-7">
+              <%= f.label :name, "宛名", class:'control-label' %>
+            </div>
+            <div class="col-lg-4">
+              <%= f.text_field :name, autocomplete: "name", placeholder: "権現坂良次郎" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-inline">
+            <div class="col-lg-7"></div>
+            <div class="col-lg-4">
+              <%= f.submit '変更内容を保存', class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :name, "宛名" %>
-    <%= f.text_field :name %>
-  </div>
+</div>
 
-  <div>
-    <%= f.submit '変更内容を保存' %>
-  </div>
-<% end %>

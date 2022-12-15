@@ -1,20 +1,73 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row py-3">
+    <h4>マイページ</h4>
+  </div>
 
-<p>登録情報</p>
-<%= link_to '編集する', edit_information_path %>
-<%= @customer.last_name %>
-<%= @customer.first_name %>
-<%= @customer.last_name_kana %>
-<%= @customer.first_name_kana %>
-<%= @customer.postal_code %>
-<%= @customer.address %>
-<%= @customer.telephone_number %>
-<%= @customer.email %>
+  <div class="row justify-content-evenly py-3">
+    <div class="col-4">
+      <h5>登録情報</h5>
+    </div>
 
-<p>配送先</p>
-<%= link_to '一覧を見る', addresses_path %>
+    <div class="col-4">
+      <%= link_to edit_information_path do %>
+        <button class="btn btn-success">編集する</button>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="row py-3">
+    <div class="col-4">
+      <table class="table" border="1">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-<p>注文履歴</p>
-<%= link_to '一覧を見る', orders_path %>
+  <div class="row justify-content-evenly p-3">
+    <div class="col-4">
+      <h5>配送先</h5>
+    </div>
+
+    <div class="col-4">
+      <%= link_to addresses_path do %>
+        <button class="btn btn-primary"> 一覧を見る</button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row justify-content-evenly p-3">
+    <div class="col-4">
+      <h5>注文履歴</h5>
+    </div>
+
+    <div class="col-4">
+      <%= link_to orders_path do %>
+        <button class="btn btn-primary">一覧を見る</button>
+      <% end %>
+    </div>
+  </div>
+
+</div>

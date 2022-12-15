@@ -1,10 +1,10 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row py-5">
 
     <div class="col-lg-2">
 
-      <table border="1">
+      <table class="table" border="1">
           <tr>
             <th>ジャンル検索</th>
           </tr>
@@ -46,7 +46,7 @@
 
     <% @items.each do |item| %>
       <div class="col-lg-2">
-        <%= image_tag item.get_item_image(150,100) %><br>
+        <%= link_to image_tag(item.get_item_image(150,100)), item_path(item.id) %><br>
         <%= item.name %>
         <%= item.price %>
       </div>
@@ -54,8 +54,3 @@
   </div>
 
 </div>
-
-
-
-
-<%= link_to 'admin_item', new_admin_item_path %>

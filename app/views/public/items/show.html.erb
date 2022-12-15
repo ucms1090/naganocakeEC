@@ -1,12 +1,39 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row py-5">
 
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-<%= @item.name %>
-<%= @item.introduction %>
-<%= @item.price %>
-<%= f.label :amount, "個数選択"%>
-<%= f.select :amount, *[1..10] %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.submit 'カートに入れる' %>
-<% end %>
+    <div class="col-lg-2">
+      <table class="table" border="1">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+
+          <tr>
+            <td>
+              <% @genres.each do |genre| %>
+              <%=link_to genre.name, root_path %><br>
+              <% end %>
+              </td>
+          </tr>
+      </table>
+    </div>
+
+    <div class="col-lg-4">
+      <%= image_tag @item.get_item_image(400,200) %>
+    </div>
+
+    <div class="col-lg-5">
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <h3 class="py-2"><%= @item.name %></h3>
+      <h4 class="py-2"><%= @item.introduction %></h4>
+      <h5 class="py-2"><%= @item.price %></h5>
+      <%= f.label :amount, "個数選択"%>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.submit 'カートに入れる', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+

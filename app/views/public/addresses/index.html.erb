@@ -1,52 +1,94 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
-
-<p>配送先登録／一覧</p>
-
-<%= form_with model: @address, url: addresses_path, method: :post do |f| %>
-
-  <div>
-    <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
-    <%= f.text_field :postal_code, placeholder: "0000000" %>
+<div class="container">
+  <div class="row py-4">
+    <h5>配送先登録／一覧</h5>
   </div>
 
-  <div>
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-  </div>
+  <div class="row py-4">
+    <div class="form-horizontal m-3" role="form">
+    <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
 
-  <div>
-    <%= f.label :name, "宛名" %>
-    <%= f.text_field :name, placeholder: "令和道子" %>
-  </div>
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-7">
+            <%= f.label :postal_code, "郵便番号（ハイフンなし）", class:'control-label'%>
+          </div>
+          <div class="col-lg-5">
+            <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000" %>
+          </div>
+        </div>
+      </div>
 
-  <div>
-    <%= f.submit '新規登録' %>
-  </div>
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-7">
+            <%= f.label :address, "住所", class:'control-label'%>
+          </div>
+          <div class="col-lg-5">
+            <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+        </div>
+      </div>
 
-<% end %>
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-7">
+            <%= f.label :name, "宛名", class:'control-label'%>
+          </div>
+          <div class="col-lg-5">
+            <%= f.text_field :name, autocomplete: "name", placeholder: "令和道子" %>
+          </div>
+        </div>
+      </div>
 
+      <div>
+        <%= f.submit '新規登録', class: 'btn btn-success' %>
+      </div>
 
-  <table>
-
-  <thead>
-    <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @addresses.each do |f| %>
-    <tr>
-      <td><%= f.postal_code %></td>
-      <td><%= f.address %></td>
-      <td><%= f.name %></td>
-      <td><%= link_to '編集する', edit_address_path(f.id), method: :get %><%= link_to '削除する', address_path(f.id), method: :delete %></td>
-    </tr>
     <% end %>
-  </tbody>
+    </div>
+  </div>
 
-</table>
+  <div class="row py-4">
+    <h5>登録済住所</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <table class="table" border="1">
+
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @addresses.each do |f| %>
+          <tr>
+            <td><%= f.postal_code %></td>
+            <td><%= f.address %></td>
+            <td><%= f.name %></td>
+            <td>
+              <%= link_to edit_address_path(f.id), method: :get do %>
+                <button class="btn btn-primary">編集する</button>
+              <% end %>
+              <%= link_to address_path(f.id), method: :delete do %>
+                <button class="btn btn-danger">削除する</button>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+
