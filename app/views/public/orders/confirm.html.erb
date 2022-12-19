@@ -3,9 +3,9 @@
     <h4>注文情報確認</h4>
   </div>
 
-  <div class="row justify-content-between">
-    <div class="col-6">
-      <table border="1">
+  <div class="row">
+    <div class="col-lg-8">
+      <table class="table" border="1">
         <thead>
           <tr>
             <th>商品名</th>
@@ -28,37 +28,50 @@
         </tbody>
       </table>
     </div>
+  </div>
 
-    <div class="col-6">
-      <table border="1">
-        <tr>
-          <th>送料</th>
-          <td><%= @shipping_cost = 800 %></td>
-        </tr>
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="col-4">
+        <table class="table" border="1">
+          <tr>
+            <th>送料</th>
+            <td><%= @shipping_cost = 800 %></td>
+          </tr>
 
-        <tr>
-          <th>商品合計</th>
-          <td><%= @total %></td>
-        </tr>
+          <tr>
+            <th>商品合計</th>
+            <td><%= @total %></td>
+          </tr>
 
-        <tr>
-          <th>請求金額</th>
-          <td><%= @billing_amount = @total+800 %></td>
-        </tr>
-      </table>
+          <tr>
+            <th>請求金額</th>
+            <td><%= @billing_amount = @total+800 %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+  <div class="row my-4">
+    <div class="col-2">
+      <h5>支払方法</h5>
+    </div>
+    <div class="col-4">
+      <%= @order.method_payment_i18n %>
     </div>
   </div>
 
   <div class="row my-4">
-    <h5>支払方法</h5>
-    <%= @order.method_payment_i18n %>
-  </div>
-
-  <div class="row my-4">
-    <h5>お届け先</h5>
-    <p><%= @order.postal_code %></p>
-    <p><%= @order.postal_address %></p>
-    <p><%= @order.postal_name %></p>
+    <div class="col-2">
+      <h5>お届け先</h5>
+    </div>
+    <div class="col-4">
+      <p><%= @order.postal_code %></p>
+      <p><%= @order.postal_address %></p>
+      <p><%= @order.postal_name %></p>
+    </div>
   </div>
 
   <div class="row">

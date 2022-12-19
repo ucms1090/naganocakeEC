@@ -10,3 +10,7 @@ ja:
         making: "製作中"
         ready_to_ship: "発送準備中"
         goal: "発送済"
+    item:
+      is_active:
+        buy_now: "販売中"
+        sold_out: "販売停止中"

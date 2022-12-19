@@ -1,31 +1,41 @@
-<div>
-  <h2>商品一覧</h2>
-  <%= link_to '追加用のプラスボタン', new_admin_item_path %>
-</div>
+<div class="container">
 
-<table>
+  <div class="row py-4">
 
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
+    <div class="col-4">
+      <h2>商品一覧</h2>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <h2>
+        <%= link_to '＋', new_admin_item_path %>
+      </h2>
+    </div>
 
-  <% @items.each do |item| %>
-    <tbody>
+  </div>
+
+  <div class="row">
+
+    <table class="table" border="1">
       <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre_id %></td>
-        <td><%= item.is_active %></td>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
       </tr>
-    </tbody>
-  <% end %>
 
-</table>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td><%= item.price %></td>
+          <td><%= item.genre_id %></td>
+          <td><%= item.is_active_i18n %></td>
+        </tr>
+      <% end %>
+    </table>
 
+  </div>
+
+</div>

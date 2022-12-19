@@ -5,6 +5,9 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details
 
+  enum is_active: { buy_now: true, sold_out: false}
+
+
   def get_item_image(width,height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
