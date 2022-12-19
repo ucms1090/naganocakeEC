@@ -1,5 +1,11 @@
-<h1>Admin::Genres#show</h1>
-<p>Find me in app/views/admin/genres/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= @genre.name %>
+  </div>
+  <div class="row">
+    <%= link_to edit_admin_genre_path do %>
+      <button class="btn btn-primary">ジャンル編集</button>
+    <% end %>
+  </div>
+</div>
 
-<%= @genre.name %>
-<%= link_to 'ジャンル編集', edit_admin_genre_path %>

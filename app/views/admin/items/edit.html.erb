@@ -1,21 +1,95 @@
-<h1>admin/item/edit</h1>
+<div class="container">
+  <div class="row">
 
-<%= form_with model: @item, url: admin_item_path(params[:id]), method: :patch do |f| %>
-  <h4>商品画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>商品名</h4>
-  <%= f.text_field :name %>
-  <h4>商品説明</h4>
-  <%= f.text_area :introduction %>
-  <h4>ジャンル</h4>
-  <%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id]} %>
-  <h4>税抜価格</h4>
-  <%= f.text_field :price %>
-  <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, true %>
-  <%= f.label :is_active, "販売中" %>
-  <%= f.radio_button :is_active, false %>
-  <%= f.label :is_active, "販売停止中" %>
+    <div class="form-horizontal m-3" role="form">
 
-  <%= f.submit '変更を保存' %>
-<% end %>
+  　<%= form_with model: @item, url: admin_item_path(params[:id]), method: :patch do |f| %>
+
+  　　<div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :image, '商品画像', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+        </div>
+      </div>
+
+  　　<div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :name, '商品名', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :name, autocomplete: "name" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :introduction, '商品説明', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_area :introduction, autocomplete: "introduction" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :genre_id, 'ジャンル', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id]} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :price, '税抜価格', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :price, autocomplete: "price" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :is_active, '販売ステータス', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <div class="row">
+              <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+              <%= f.label :is_active_buy_now, Item.is_actives_i18n[:buy_now] %>
+            </div>
+            <div class="row">
+              <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+              <%= f.label :is_active_sold_out, Item.is_actives_i18n[:sold_out] %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    　<div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+
+          </div>
+          <div class="col-lg-8">
+            <%= f.submit "変更を保存", class:'btn btn-success' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  </div>
+</div>
