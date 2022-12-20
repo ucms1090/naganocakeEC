@@ -1,2 +1,57 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row py-4">
+    <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+  </div>
+
+  <div class="row py-3">
+    <div class="col-4">
+      <table class="table" border="1">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td><%= @customer.is_deleted_i18n %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row py-4">
+    <div class="col-4">
+      <%= link_to edit_admin_customer_path do %>
+        <button class="btn btn-success">編集する</button>
+      <% end %>
+    </div>
+
+    <div class="col-4"></div>
+
+    <div class="col-4">
+      注文履歴一覧
+    </div>
+
+  </div>
+
+</div>
+

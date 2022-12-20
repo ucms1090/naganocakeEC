@@ -14,3 +14,7 @@ ja:
       is_active:
         buy_now: "販売中"
         sold_out: "販売停止中"
+    customer:
+      is_deleted:
+        exist: "有効"
+        not_exist: "退会"

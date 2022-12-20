@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
 
   namespace :admin do
-    resources :customers, only: [:show, :index, :edit]
+    resources :customers, only: [:show, :index, :edit, :update]
     resources :items
     resources :genres
   end

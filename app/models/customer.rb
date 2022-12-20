@@ -7,6 +7,8 @@ class Customer < ApplicationRecord
   validate :last_name, :first_name, :last_name_kana, :first_name_kana,
            :postal_code, :address, :telephone_number, :is_deleted
 
+  enum is_deleted: { not_exist: true, exist: false}
+
   has_many :cart_items
   has_many :orders
   has_many :addresses
