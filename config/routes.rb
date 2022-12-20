@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:show, :index, :edit, :update]
+    resources :orders, only: [:show, :index, :edit]
     resources :items
     resources :genres
   end
