@@ -1,9 +1,35 @@
 <div class="container">
 
-  <div class="row py-4">
-    <%= link_to new_admin_genre_path do %>
-      <button class="btn btn-success">新規登録</button>
+  <div class="row">
+
+    <div class="form-horizontal m-3" role="form">
+
+  　<%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+
+  　　<div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+            <%= f.label :name, 'ジャンル名', class:'control-label' %>
+          </div>
+          <div class="col-lg-8">
+            <%= f.text_field :name,　placeholder: "ジャンル名" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-inline">
+          <div class="col-lg-4">
+
+          </div>
+          <div class="col-lg-8">
+            <%= f.submit "新規登録", class:'btn btn-success' %>
+          </div>
+        </div>
+      </div>
     <% end %>
+
+    </div>
   </div>
 
   <div class="row py-4">
