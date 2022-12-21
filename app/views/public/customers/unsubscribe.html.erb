@@ -17,7 +17,7 @@
       <% end %>
     </div>
     <div class="col-4">
-      <%= form_with model: @customer, url: withdraw_path, method: :patch do |f| %>
+      <%= form_with model: @customer, url: withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" } do |f| %>
         <%= f.submit '退会する', class: "btn btn-danger" %>
       <% end %>
     </div>
