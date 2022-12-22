@@ -4,6 +4,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @total = 0
     @cart_items = CartItem.where(customer_id: current_customer)
+    @current_cart_items = current_customer.cart_items.exists?
   end
 
   def create
